@@ -1,4 +1,4 @@
-git inipackage dev.lucasdabs.carselection
+import dev.lucasdabs.carselection.R
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
