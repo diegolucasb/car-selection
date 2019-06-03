@@ -16,8 +16,8 @@ class PickerDialogDataSource(
                 .subscribe({
                     callback.onResult(
                         it.data.map { Manufacturer(it.key, it.value) },
-                        it.page?.toInt(),
-                        it.totalPageCount?.toInt())
+                        it.page,
+                        it.totalPageCount)
                 }, {
 
                 })
@@ -28,7 +28,7 @@ class PickerDialogDataSource(
         compositeDisposable.add(
             service.fetchData(params.key, params.requestedLoadSize)
                 .subscribe({
-                    callback.onResult( it.data.map { Manufacturer(it.key, it.value) } , it.page?.toInt())
+                    callback.onResult( it.data.map { Manufacturer(it.key, it.value) } , it.page)
                 }, {
 
                 })

@@ -42,9 +42,9 @@ class PickerDialogFragment: DialogFragment(), PickerDialogContract.View {
 
 
     override fun updateAdapter(list: List<Manufacturer>) {
-//        listManufacturer.clear()
-//        listManufacturer.addAll(list)
-//        adapter.notifyDataSetChanged()
+        listManufacturer.clear()
+        listManufacturer.addAll(list)
+        adapter.notifyDataSetChanged()
     }
 
     private fun bindView() {
@@ -57,17 +57,17 @@ class PickerDialogFragment: DialogFragment(), PickerDialogContract.View {
         dialogView.recyclerView.layoutManager = layoutManager
 
         dialogView.recyclerView.adapter = adapter
-        presenter.list.observe(this, Observer<PagedList<Manufacturer>> { adapter.list = it })
+        presenter.list.observe(this, Observer<PagedList<Manufacturer>> {
+            adapter.list = it
+            adapter.notifyDataSetChanged()
+        })
 
 //        presenter.loadData()
     }
 
-    private fun onScrollListener(manager: LinearLayoutManager, currentPage: Int) {
-
-    }
-
     override fun initProgress() {
-        dialogView.progressBar.visibility = View.VISIBLE
+        dialogView.progressBar.visibility = View.GONE
+//        dialogView.progressBar.visibility = View.VISIBLE
     }
 
     override fun stopProgress() {
