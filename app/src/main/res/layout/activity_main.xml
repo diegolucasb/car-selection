@@ -4,16 +4,49 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-    <TextView
-            android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+    <EditText
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
+            android:inputType="textPersonName"
+            tools:text="Manufacturer"
+            android:ems="10"
+            android:hint="@string/manufacturer_hint"
+            android:id="@+id/editManufacturer" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp" android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="false"
+    />
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            tools:text="Model"
+            android:hint="@string/model_hint"
+            android:ems="10"
+            android:id="@+id/editModel"
+            app:layout_constraintTop_toBottomOf="@+id/editManufacturer" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" android:layout_marginRight="16dp" android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="false"
+    />
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            tools:text="Year"
+            android:hint="@string/year_hint"
+            android:ems="10"
+            android:id="@+id/editYear"
+            app:layout_constraintTop_toBottomOf="@+id/editModel" android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="false"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>
