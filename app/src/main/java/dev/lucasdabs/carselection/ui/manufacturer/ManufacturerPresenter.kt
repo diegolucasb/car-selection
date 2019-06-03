@@ -30,4 +30,8 @@ class ManufacturerPresenter(private val view: ManufacturersContract.View): Manuf
         view.showError(throwable.message?:"")
     }
 
+    override fun onCleared() {
+    }
+
+
 }
