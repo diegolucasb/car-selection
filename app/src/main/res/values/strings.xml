@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">car-selection</string>
+    <string name="manufacturer_hint">Manufacturer</string>
+    <string name="model_hint">Model</string>
+    <string name="year_hint">Year</string>
+    <string name="buttonConfirm">Ok</string>
+    <string name="ok_button">Ok</string>
+    <string name="cancel_button">Cancel</string>
 </resources>
