@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.lucasdabs.carselection.R
 import dev.lucasdabs.carselection.api.data.Manufacturer
@@ -40,9 +42,9 @@ class PickerDialogFragment: DialogFragment(), PickerDialogContract.View {
 
 
     override fun updateAdapter(list: List<Manufacturer>) {
-        listManufacturer.clear()
-        listManufacturer.addAll(list)
-        adapter.notifyDataSetChanged()
+//        listManufacturer.clear()
+//        listManufacturer.addAll(list)
+//        adapter.notifyDataSetChanged()
     }
 
     private fun bindView() {
@@ -55,7 +57,9 @@ class PickerDialogFragment: DialogFragment(), PickerDialogContract.View {
         dialogView.recyclerView.layoutManager = layoutManager
 
         dialogView.recyclerView.adapter = adapter
-        presenter.loadData()
+        presenter.list.observe(this, Observer<PagedList<Manufacturer>> { adapter.list = it })
+
+//        presenter.loadData()
     }
 
     private fun onScrollListener(manager: LinearLayoutManager, currentPage: Int) {
