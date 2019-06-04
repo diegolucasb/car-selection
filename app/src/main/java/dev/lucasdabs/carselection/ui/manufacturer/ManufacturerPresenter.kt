@@ -27,7 +27,6 @@ class ManufacturerPresenter(private val view: ManufacturersContract.View): Manuf
     }
 
     private fun onFetchError(throwable: Throwable) {
-        view.showError(throwable.message?:"")
     }
 
     override fun onCleared() {
