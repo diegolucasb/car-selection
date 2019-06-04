@@ -6,4 +6,6 @@
     <string name="buttonConfirm">Ok</string>
     <string name="ok_button">Ok</string>
     <string name="cancel_button">Cancel</string>
+    <string name="error_fetch_data">Error fetching data</string>
+    <string name="search_hint">Search item</string>
 </resources>

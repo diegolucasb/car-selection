@@ -33,12 +33,4 @@ class ManufacturerActivity : AppCompatActivity(), ManufacturersContract.View {
 //        spinner.adapter = adapter
     }
 
-    override fun initProgress() {
-    }
-
-    override fun stopProgress() {
-    }
-
-    override fun showError(errorMessage: String) {
-    }
 }
