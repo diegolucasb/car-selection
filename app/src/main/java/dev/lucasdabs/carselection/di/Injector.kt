@@ -17,9 +17,8 @@ object Injector {
         }
     }
 
-    inline fun <reified T : Any> bindGenericService(service: KClass<T>) =
-        Kodein.Module("services") {
-            import(retrofitModule())
+    inline fun <reified T : Any> bindGenericService(service: KClass<T>, name: String) =
+        Kodein.Module(name) {
             bind<T>() with provider {
                 instance<RestClient>().buildCall(service)
             }
