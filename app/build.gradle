@@ -63,6 +63,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
 
     implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+    implementation 'androidx.core:core-ktx:1.0.1'
 
     //network communication dependencies
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
