@@ -39,7 +39,7 @@ class PickerDialogFragment : DialogFragment(), KodeinAware {
     private lateinit var dialogView: View
 
     var manufacturerLiveData = MutableLiveData<BaseData>()
-    lateinit var viewModel: PickerDialogViewModel
+    private lateinit var viewModel: PickerDialogViewModel
 
     private val parameters by lazy { arguments?.get(PARAMETER) as? RequestParameter }
     private val requestType by lazy { arguments?.get(SERVICE) }
