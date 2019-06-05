@@ -12,8 +12,8 @@ class BuiltDateRepository(private val service: BuiltDatesService): BaseRepositor
     override fun fetchData(parameters: RequestParameter): Observable<BaseResponse> {
         val map = mapOf(
             parameters.key.first to parameters.key.second,
-            parameters.manufacturerId?.first to parameters.manufacturerId?.second,
-            parameters.modelId?.first to parameters.modelId?.second
+            parameters.manufacturerId?.first to parameters.manufacturerId?.second?.id,
+            parameters.modelId?.first to parameters.modelId?.second?.id
         )
 
         return service.fetchData(map).subscribeOn(Schedulers.newThread())

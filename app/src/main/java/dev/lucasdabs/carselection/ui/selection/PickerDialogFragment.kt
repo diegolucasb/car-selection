@@ -3,14 +3,11 @@ package dev.lucasdabs.carselection.ui.selection
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.*
-import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.lucasdabs.carselection.R
@@ -44,12 +41,22 @@ class PickerDialogFragment: DialogFragment(), KodeinAware {
     var manufacturerLiveData = MutableLiveData<BaseData>()
     lateinit var viewModel: PickerDialogViewModel
 
+    private val parameters by lazy { arguments?.get(PARAMETER) as? RequestParameter }
+    private val requestType by lazy { arguments?.get(SERVICE) }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val parameters = arguments?.get(PARAMETER) as? RequestParameter
+        var title = getString(R.string.year_hint)
+
         currentRepository =
-            when (arguments?.get(SERVICE)) {
-                RequestType.MANUFACTURER -> manufacturerRepository
-                RequestType.MODEL -> modelRepository
+            when (requestType) {
+                RequestType.MANUFACTURER -> {
+                    title = getString(R.string.manufacturer_hint)
+                    manufacturerRepository
+                }
+                RequestType.MODEL -> {
+                    title = getString(R.string.manufacturer_hint)
+                    modelRepository
+                }
                 else -> builtDatesRepository
             }
 
@@ -61,6 +68,7 @@ class PickerDialogFragment: DialogFragment(), KodeinAware {
             .inflate(R.layout.dialog_fragment, null)
 
         val builder = AlertDialog.Builder(context)
+            .setTitle(title)
             .setNegativeButton(R.string.cancel_button, null)
 
         bindView()
@@ -68,16 +76,23 @@ class PickerDialogFragment: DialogFragment(), KodeinAware {
         return builder.create()
     }
 
-
-
     private fun onDialogClickItem(item: Any) {
         manufacturerLiveData.postValue(item as BaseData)
         dismiss()
     }
 
     private fun bindView() {
-
         adapter = PickerDialogAdapter(::onDialogClickItem)
+
+        dialogView.textViewManufacturer.text = String.format(
+            getString(R.string.selected_manufacturer),
+            parameters?.manufacturerId?.second?.name)
+
+        dialogView.textViewModel.text = String.format(
+            getString(R.string.selected_model,
+            parameters?.modelId?.second?.name))
+        dialogView.textViewManufacturer.visibility = if (requestType == RequestType.MANUFACTURER) View.GONE else View.VISIBLE
+        dialogView.textViewModel.visibility = if(requestType != RequestType.BUILT_DATES) View.GONE else View.VISIBLE
 
         dialogView.recyclerView.layoutManager = LinearLayoutManager(activity)
         dialogView.recyclerView.setHasFixedSize(true)
