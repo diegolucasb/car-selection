@@ -1,13 +1,12 @@
 package dev.lucasdabs.carselection.api.repository
 
-import dev.lucasdabs.carselection.BuildConfig
 import dev.lucasdabs.carselection.api.data.RequestParameter
 import dev.lucasdabs.carselection.api.response.BaseResponse
 import dev.lucasdabs.carselection.api.service.ManufacturerService
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
-class ManufacturerRepository(private val service: ManufacturerService): BaseRepository {
+class ManufacturerRepository(private val service: ManufacturerService) : BaseRepository {
 
     override fun fetchData(parameters: RequestParameter): Observable<BaseResponse> {
         val map = mapOf(

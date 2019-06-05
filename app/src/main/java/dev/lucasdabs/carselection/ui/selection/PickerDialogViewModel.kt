@@ -41,5 +41,4 @@ class PickerDialogViewModel(repository: BaseRepository,
     override fun onCleared() {
         compositeDisposable.dispose()
     }
-
 }

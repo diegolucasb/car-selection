@@ -6,30 +6,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="@string/search_hint"
-            android:ems="10"
-            android:id="@+id/searchEditText"
-            android:drawableRight="@android:drawable/ic_menu_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp" android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp" android:layout_marginRight="16dp" android:layout_marginEnd="16dp"
-            android:drawableEnd="@android:drawable/ic_menu_search"/>
-
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="0dp"
             android:layout_height="400dp"
-            app:layout_constraintEnd_toEndOf="@+id/searchEditText"
             tools:listitem="@layout/item_adapter"
-            app:layout_constraintStart_toStartOf="@+id/searchEditText"
-            app:layout_constraintTop_toBottomOf="@+id/searchEditText"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-    />
+            app:layout_constraintTop_toBottomOf="@+id/textViewModel" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"/>
 
     <ProgressBar
             style="?android:attr/progressBarStyle"
@@ -41,7 +27,32 @@
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/recyclerView"
             app:layout_constraintEnd_toEndOf="@+id/recyclerView" android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"/>
-
+    <TextView
+            tools:text="TextView"
+            android:paddingTop="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewManufacturer" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+    <TextView
+            tools:text="TextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:id="@+id/textViewModel"
+            app:layout_constraintTop_toBottomOf="@+id/textViewManufacturer"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" android:layout_marginRight="16dp" android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
