@@ -12,6 +12,9 @@ buildscript {
         androidx_version = '1.1.0-alpha02'
         rx_version = '2.1.14'
         rx_android_version = '2.0.2'
+        lifecycle_version = '2.0.0'
+        ktx_version = '1.0.1'
+        paging_version = '1.0.1'
 
         mockk_version = '1.9'
         androidx_test = '1.0.0'
