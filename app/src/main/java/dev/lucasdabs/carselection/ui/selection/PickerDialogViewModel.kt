@@ -2,39 +2,36 @@ package dev.lucasdabs.carselection.ui.selection
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import dev.lucasdabs.carselection.api.data.Manufacturer
-import dev.lucasdabs.carselection.api.repository.ManufacturerRepository
-import dev.lucasdabs.carselection.api.response.BaseResponse
+import dev.lucasdabs.carselection.api.data.BaseData
+import dev.lucasdabs.carselection.api.data.RequestParameter
+import dev.lucasdabs.carselection.api.repository.BaseRepository
 import dev.lucasdabs.carselection.ui.selection.paging.PickerDialogDataSource
 import dev.lucasdabs.carselection.ui.selection.paging.PickerDialogDataSourceFactory
 import dev.lucasdabs.carselection.util.Constants
 import io.reactivex.disposables.CompositeDisposable
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
 
-class PickerDialogPresenter(view: PickerDialogContract.View): PickerDialogContract.Presenter {
-
-    override val kodein by kodein(view.viewContext)
-    private val manufacturerRepository by instance<ManufacturerRepository>()
+class PickerDialogViewModel(repository: BaseRepository,
+                            parameterName: RequestParameter) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     private val sourceFactory: PickerDialogDataSourceFactory by lazy {
-        PickerDialogDataSourceFactory(manufacturerRepository, compositeDisposable)
+        PickerDialogDataSourceFactory(repository, compositeDisposable, parameterName)
     }
 
-    val list: LiveData<PagedList<Manufacturer>>
+    val list: LiveData<PagedList<BaseData>>
     val state: LiveData<PickerDialogDataSource.State>
 
     init {
         val config = PagedList.Config.Builder()
             .setPageSize(Constants.Pagination.PAGE_SIZE)
-            .setInitialLoadSizeHint(Constants.Pagination.PAGE_SIZE * 2)
+            .setInitialLoadSizeHint(Constants.Pagination.PAGE_SIZE)
             .setEnablePlaceholders(false)
             .build()
 
-        list = LivePagedListBuilder<Int, Manufacturer>(sourceFactory, config).build()
+        list = LivePagedListBuilder<Int, BaseData>(sourceFactory, config).build()
         state = Transformations
             .switchMap<PickerDialogDataSource, PickerDialogDataSource.State>(
                 sourceFactory.liveData,
@@ -44,4 +41,5 @@ class PickerDialogPresenter(view: PickerDialogContract.View): PickerDialogContra
     override fun onCleared() {
         compositeDisposable.dispose()
     }
+
 }
