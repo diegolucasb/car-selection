@@ -3,14 +3,11 @@ package dev.lucasdabs.carselection.ui.main
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import dev.lucasdabs.carselection.R
-import dev.lucasdabs.carselection.api.data.RequestParameter
 import dev.lucasdabs.carselection.ui.selection.PickerDialogFragment
-import dev.lucasdabs.carselection.util.RequestType
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), LifecycleOwner {
@@ -66,5 +63,4 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
             viewModel.postValue(view.id, it)
         })
     }
-
 }

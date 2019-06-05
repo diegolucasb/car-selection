@@ -11,4 +11,4 @@ data class RequestParameter(
     var pageSize: Pair<String, Int> = Pair("pageSize", Constants.Pagination.PAGE_SIZE),
     var key: Pair<String, String> = Pair("wa_key", BuildConfig.WA_KEY),
     var manufacturerId: Pair<String, BaseData>? = null,
-    var modelId: Pair<String, BaseData>? = null): Parcelable
+    var modelId: Pair<String, BaseData>? = null) : Parcelable

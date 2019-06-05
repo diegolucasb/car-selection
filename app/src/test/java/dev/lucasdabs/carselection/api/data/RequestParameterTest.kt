@@ -17,5 +17,4 @@ class RequestParameterTest {
         Assert.assertEquals(parameter.manufacturerId?.second, null)
         Assert.assertEquals(parameter.modelId?.second, null)
     }
-
 }

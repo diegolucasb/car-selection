@@ -13,5 +13,4 @@ class RestClientTest {
 
         Assert.assertNotNull(service)
     }
-
 }
