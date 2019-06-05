@@ -6,9 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
-interface ManufacturerService {
+interface ModelService {
 
-    @GET("/v1/car-types/manufacturer")
+    @GET("/v1/car-types/main-types")
     fun fetchData(
-        @QueryMap args: Map<String, String>): Observable<BaseResponse>
+        @QueryMap args: Map<String?, String?>): Observable<BaseResponse>
 }

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-        tools:text="TextVsafasdfasdfadf adfads fasd iew"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:text="Item that will be rendered from adapter"
         android:layout_width="match_parent"
-        android:layout_height="19dp"
+        android:layout_height="wrap_content"
         android:id="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="16dp" android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="16dp" android:layout_marginEnd="16dp"/>
+        android:padding="16dp"
+/>
 
