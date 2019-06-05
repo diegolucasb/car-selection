@@ -2,7 +2,6 @@ package dev.lucasdabs.carselection.core
 
 import android.app.Application
 import android.content.Context
-import dev.lucasdabs.carselection.api.repository.BaseRepository
 import dev.lucasdabs.carselection.api.repository.BuiltDateRepository
 import dev.lucasdabs.carselection.api.repository.ManufacturerRepository
 import dev.lucasdabs.carselection.api.repository.ModelRepository
@@ -16,7 +15,7 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 
-class App: Application(), KodeinAware {
+class App : Application(), KodeinAware {
 
     override val kodein by Kodein.lazy {
         import(Injector.retrofitModule())

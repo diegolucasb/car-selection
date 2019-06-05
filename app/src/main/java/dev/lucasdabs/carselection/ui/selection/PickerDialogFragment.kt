@@ -27,7 +27,7 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.support.kodein
 import org.kodein.di.generic.instance
 
-class PickerDialogFragment: DialogFragment(), KodeinAware {
+class PickerDialogFragment : DialogFragment(), KodeinAware {
 
     override val kodein: Kodein by kodein()
     private val manufacturerRepository by instance<ManufacturerRepository>()
@@ -61,7 +61,7 @@ class PickerDialogFragment: DialogFragment(), KodeinAware {
             }
 
         viewModel = ViewModelProviders
-            .of(this, MyFactory(currentRepository, parameters?: RequestParameter()))
+            .of(this, MyFactory(currentRepository, parameters ?: RequestParameter()))
             .get(PickerDialogViewModel::class.java)
 
         dialogView = LayoutInflater.from(context)
@@ -92,7 +92,7 @@ class PickerDialogFragment: DialogFragment(), KodeinAware {
             getString(R.string.selected_model,
             parameters?.modelId?.second?.name))
         dialogView.textViewManufacturer.visibility = if (requestType == RequestType.MANUFACTURER) View.GONE else View.VISIBLE
-        dialogView.textViewModel.visibility = if(requestType != RequestType.BUILT_DATES) View.GONE else View.VISIBLE
+        dialogView.textViewModel.visibility = if (requestType != RequestType.BUILT_DATES) View.GONE else View.VISIBLE
 
         dialogView.recyclerView.layoutManager = LinearLayoutManager(activity)
         dialogView.recyclerView.setHasFixedSize(true)
@@ -144,10 +144,9 @@ class PickerDialogFragment: DialogFragment(), KodeinAware {
     }
 
     class MyFactory(private val repository: BaseRepository,
-                    private val parameter: RequestParameter): ViewModelProvider.Factory {
+                    private val parameter: RequestParameter) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return PickerDialogViewModel(repository, parameter) as T
         }
     }
-
 }

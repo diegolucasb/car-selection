@@ -3,7 +3,6 @@ package dev.lucasdabs.carselection.api.repository
 import dev.lucasdabs.carselection.api.data.RequestParameter
 import dev.lucasdabs.carselection.api.response.BaseResponse
 import dev.lucasdabs.carselection.api.service.BuiltDatesService
-import dev.lucasdabs.carselection.api.service.ModelService
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
