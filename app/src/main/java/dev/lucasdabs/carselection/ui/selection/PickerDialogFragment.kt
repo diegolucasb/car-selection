@@ -7,7 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.lucasdabs.carselection.R
@@ -20,7 +24,6 @@ import dev.lucasdabs.carselection.api.repository.ModelRepository
 import dev.lucasdabs.carselection.ui.selection.paging.PickerDialogDataSource
 import dev.lucasdabs.carselection.ui.selection.presentation.PickerDialogAdapter
 import dev.lucasdabs.carselection.util.RequestType
-import kotlinx.android.synthetic.main.dialog_fragment.*
 import kotlinx.android.synthetic.main.dialog_fragment.view.*
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -91,7 +94,8 @@ class PickerDialogFragment : DialogFragment(), KodeinAware {
         dialogView.textViewModel.text = String.format(
             getString(R.string.selected_model,
             parameters?.modelId?.second?.name))
-        dialogView.textViewManufacturer.visibility = if (requestType == RequestType.MANUFACTURER) View.GONE else View.VISIBLE
+        dialogView.textViewManufacturer.visibility =
+            if (requestType == RequestType.MANUFACTURER) View.GONE else View.VISIBLE
         dialogView.textViewModel.visibility = if (requestType != RequestType.BUILT_DATES) View.GONE else View.VISIBLE
 
         dialogView.recyclerView.layoutManager = LinearLayoutManager(activity)
