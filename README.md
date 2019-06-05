@@ -1,4 +1,4 @@
-# MyTaxi Android challenge
+# Simple project demonstration
 You can download the APK [here](https://github.com/diegolucasb/car-selection/tree/master/apk) or see the [images](https://github.com/diegolucasb/car-selection/tree/master/screenshots) here.
 
 ## Assumption I made
