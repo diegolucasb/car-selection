@@ -3,9 +3,6 @@ package dev.lucasdabs.carselection.ui.selection.presentation
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import androidx.core.content.ContextCompat
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -23,12 +20,12 @@ class PickerDialogAdapter(val clickItem: (item: Any) -> Unit = {}
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        item?.let{
+        item?.let {
             holder.render(it, position)
         }
     }
 
-    inner class ViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
         fun render(item: Any, position: Int) {
             view.setBackgroundColor(view.context.colorRes(
@@ -50,7 +47,6 @@ class PickerDialogAdapter(val clickItem: (item: Any) -> Unit = {}
 
             override fun areContentsTheSame(oldItem: BaseData, newItem: BaseData): Boolean =
                 oldItem == newItem
-
         }
     }
 }

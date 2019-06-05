@@ -6,7 +6,7 @@ import dev.lucasdabs.carselection.api.service.ModelService
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
-class ModelRepository(private val service: ModelService): BaseRepository {
+class ModelRepository(private val service: ModelService) : BaseRepository {
 
     override fun fetchData(parameters: RequestParameter): Observable<BaseResponse> {
         val map = mapOf(
@@ -18,5 +18,4 @@ class ModelRepository(private val service: ModelService): BaseRepository {
 
         return service.fetchData(map).subscribeOn(Schedulers.newThread())
     }
-
 }

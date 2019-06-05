@@ -10,7 +10,7 @@ import io.reactivex.disposables.CompositeDisposable
 class PickerDialogDataSource(
     private val service: BaseRepository,
     private val compositeDisposable: CompositeDisposable,
-    private val parameters: RequestParameter):
+    private val parameters: RequestParameter) :
     PageKeyedDataSource<Int, BaseData>() {
 
     val state: MutableLiveData<State> = MutableLiveData()
@@ -45,7 +45,7 @@ class PickerDialogDataSource(
                     updateState(State.DONE)
 
                     callback.onResult( it.data.map {
-                            item -> BaseData(item.key, item.value) } ,
+                            item -> BaseData(item.key, item.value) },
                         it.page?.plus(1))
                 }, {
                     updateState(State.ERROR)
@@ -64,4 +64,3 @@ class PickerDialogDataSource(
         DONE, LOADING, ERROR
     }
 }
-

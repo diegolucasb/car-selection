@@ -19,5 +19,4 @@ class PickerDialogDataSourceFactory(private val service: BaseRepository,
         liveData.postValue(dataSource)
         return dataSource
     }
-
 }

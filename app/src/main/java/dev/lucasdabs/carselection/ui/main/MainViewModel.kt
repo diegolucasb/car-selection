@@ -1,7 +1,6 @@
 package dev.lucasdabs.carselection.ui.main
 
 import androidx.core.os.bundleOf
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dev.lucasdabs.carselection.R
@@ -10,14 +9,14 @@ import dev.lucasdabs.carselection.api.data.RequestParameter
 import dev.lucasdabs.carselection.ui.selection.PickerDialogFragment
 import dev.lucasdabs.carselection.util.RequestType
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
 
     val manufacturer = MutableLiveData<BaseData>()
     val model = MutableLiveData<BaseData>()
     val year = MutableLiveData<BaseData>()
 
     fun bundle(viewId: Int) =
-        when(viewId) {
+        when (viewId) {
 
             R.id.editManufacturer -> {
                 bundleOf(
@@ -49,9 +48,8 @@ class MainViewModel: ViewModel() {
             else -> null
         }
 
-
     fun postValue(viewId: Int, baseData: BaseData) {
-        when(viewId) {
+        when (viewId) {
             R.id.editManufacturer -> manufacturer.postValue(baseData)
             R.id.editModel -> model.postValue(baseData)
             R.id.editYear -> year.postValue(baseData)
