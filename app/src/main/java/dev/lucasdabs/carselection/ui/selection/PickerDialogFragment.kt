@@ -93,7 +93,7 @@ class PickerDialogFragment : DialogFragment(), KodeinAware {
 
         dialogView.textViewModel.text = String.format(
             getString(R.string.selected_model,
-            parameters?.modelId?.second?.name))
+                parameters?.modelId?.second?.name))
         dialogView.textViewManufacturer.visibility =
             if (requestType == RequestType.MANUFACTURER) View.GONE else View.VISIBLE
         dialogView.textViewModel.visibility = if (requestType != RequestType.BUILT_DATES) View.GONE else View.VISIBLE
