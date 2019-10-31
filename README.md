@@ -46,3 +46,4 @@ I also used [ktlint](https://ktlint.github.io/) and [detekt](https://github.com/
 
 ## Author
 Build with ❤️ and any feedback is welcome
+Lucas Amaral
